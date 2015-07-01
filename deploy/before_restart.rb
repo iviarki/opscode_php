@@ -1,6 +1,6 @@
 node[:deploy].each do |application, deploy|
 	execute "chown" do
-	  command "chown -R deploy:deploy #{node[:deploy][application][:deploy_to]}/current/config"
+	  command "chown -R root:root #{node[:deploy][application][:deploy_to]}/current/config"
 	  user "root"
 	  action :run
 	end
