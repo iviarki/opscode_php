@@ -1,11 +1,11 @@
-execute "chown-data-www" do
-  command "chown -R www-data:www-data /var/www/myfoler"
+execute "chown" do
+  command "chown -R deploy:deploy #{node[:deploy][application][:deploy_to]}/current/config"
   user "root"
   action :run
 end
 
-execute "chmod-data-www" do
-  command "chmod -R 777 /var/www/myfoler"
+execute "chmod" do
+  command "chmod -R 777 #{node[:deploy][application][:deploy_to]}/current/config"
   user "root"
   action :run
 end
