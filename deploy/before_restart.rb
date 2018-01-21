@@ -1,5 +1,5 @@
 node[:deploy].each do |application, deploy|
-  instance0 = node["opsworks"]["layers"]["php-app"]["instances"].first
+  instance0 = node["opsworks"]["layers"]["php-app"]["instances"].values[0]["aws_instance_id"]
 	Chef::Log.info(instance0)
   thisinstance = node["opsworks"]["instance"]["aws_instance_id"]
 	Chef::Log.info(thisinstance)
