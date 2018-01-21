@@ -1,13 +1,9 @@
 node[:deploy].each do |application, deploy|
-	execute "chown" do
-	  command "chown -R root:root #{node[:deploy][application][:deploy_to]}/current/config"
-	  user "root"
-	  action :run
-	end
-
-	execute "chmod" do
-	  command "chmod -R 777 #{node[:deploy][application][:deploy_to]}/current/config"
-	  user "root"
-	  action :run
+  instance0 = node["opsworks"]["layers"]["layershortname"]["instances"][0]["aws_instance_id"]
+	Chef::Log.info(instance0)
+  thisinstance = node["opsworks"]["instance"]["aws_instance_id"]
+	Chef::Log.info(thisinstance)
+	if instance0 == thisinstance
+		Chef::Log.info("Same Isntance")
 	end
 end
